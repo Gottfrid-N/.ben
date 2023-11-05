@@ -1,1 +1,1 @@
-[Benny](./Shitty%20Hypertext%20Markup%20Language/benny.md)
+[Shitty Hypertext Markup Language](./Shitty%20Hypertext%20Markup%20Language/shhtml.md)

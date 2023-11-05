@@ -1,0 +1,57 @@
+%"html"() {
+    // \*insert html here\*
+}
+
+%"ms"() {
+    
+}
+
+// inline comment
+// cant have header and cant be nested
+// due to how comments work they can have either
+|/ or
+\/
+
+/* # multiline comment
+|* like docs but \* instead of \' and way more relaxed i.e. headers anywhere, content doesn't have to be in \"\" but paragraphs can only be created with \"\".
+\*
+
+/' # "Docs"
+|' "Content/Paragraphs inside \"\""
+|'
+|' "/* = open"&
+|' "|* = content"&
+|' "\* = close"
+|'
+|' "Headers can only be on \"open\" and content can only be in \"content\"."
+|' "Use \& after \" to make multiline paragraphs."
+|'
+|' /' # "Nested doc"
+|' |' "So cool."
+|' \'
+|'
+|' /' # "Headers"
+|' |' "6 levels (like html)."
+|' |' "#, ##, ###, ####, ##### and ###### respectively."
+|' |'
+|' \'
+|'
+|' /' # "Can be slightly dripped out" '\
+|' |' "so cool"                       '|
+|' \'                                 '/
+|'
+|' /' # "Can even have two alternatives" '|' # "Super cool :D" '\
+|' |' "so cool"                          '|' "Drip"            '|               
+|' \'                                    '|'                   '/
+|'
+|' /'#              "Whitespace doesn't matter outside of content"                  *\
+|'          |* "omg.png" *|
+|'                                                              \*                                      */
+|'
+|' // comments inside docs :o
+|'
+|' /* "multilines too?"
+|' |* ":O"
+|' \*
+|'
+\'
