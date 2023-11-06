@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset=@'txt'($head.charset)[UTF-8]&'"'()>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <a href="./"></a>
-    <title>$head.title</title>
-    $head
+    <title>@t'$head.title'</title>
+    @'txt'($head)
 </head>
 <body>
-    $body
+    @'txt'($body)
 </body>
-&html
+@'txt'($html)
 </html>
