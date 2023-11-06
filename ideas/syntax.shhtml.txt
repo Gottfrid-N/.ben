@@ -1,0 +1,9 @@
+/ "&" = function
+| &'compiler path'(compiler args)
+| / absolute path = "\"
+| \ relative path = ".\"
+\
+
+/ "$"
+|
+\
