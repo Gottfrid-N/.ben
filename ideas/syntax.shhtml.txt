@@ -4,6 +4,19 @@
 | \ relative path = ".\"
 \
 
-/ "$"
-|
+/ "@" = metalbeard
+| @() = metalbeard "group"
+| "$" = metalbeard variable
+| #
+| ".." = to end of scope
+| ".\n" = to end of line
+| ".%%" = to regex match
 \
+
+"" = string
+'' = directory
+%% = regex (add "()" to choose what matches are used)
+to first match of regex
+"%%(%=x)" = x'th match
+"%%(%>=x)" = match number must be >=x
+"%%(%<=x,%>=y)" = match number must <=x and >=y

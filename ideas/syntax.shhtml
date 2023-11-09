@@ -1,7 +1,7 @@
-&'html'(preset = &'.\!'($title, $head, $body, $html)) {
+&'html'(preset = &'.\!'($this)) {
     $head {
         $title {
-            @'string'
+            @()..&'surround'("\"")
             holy moly
         }
     }
