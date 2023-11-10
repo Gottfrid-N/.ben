@@ -4,11 +4,11 @@
     <meta charset=@($head.charset)&'surround'("\"")>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <a href="./"></a>
-    <title>@($head.title)</title>
-    @($head)
+    <title>@($preset.head.title)</title>
+    @($preset.head)
 </head>
 <body>
-    @($body)
+    @($preset.body)
 </body>
-@($html)
+@($preset.$html)
 </html>

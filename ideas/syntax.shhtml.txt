@@ -1,4 +1,4 @@
-/ "&" = function
+/ "&" = compiler call
 | &'compiler path'(compiler args)
 | / absolute path = "\"
 | \ relative path = ".\"
@@ -6,17 +6,20 @@
 
 / "@" = metalbeard
 | @() = metalbeard "group"
-| "$" = metalbeard variable
-| #
-| ".." = to end of scope
-| ".\n" = to end of line
-| ".%%" = to regex match
+| "%" = metalbeard variable
+| "#" = metalbeard function
+|
+| / .   = to 
+| | .// = to regex match (cant be global)
+| | .,  = to beginning of scope
+| \ ..  = to end of scope
+|
+| / ,   = from
+| | ,// = from regex match (cant be global)
+| | ,,  = from beginning of scope
+| \ ,.  = from end of scope
 \
 
 "" = string
 '' = directory
-%% = regex (add "()" to choose what matches are used)
-to first match of regex
-"%%(%=x)" = x'th match
-"%%(%>=x)" = match number must be >=x
-"%%(%<=x,%>=y)" = match number must <=x and >=y
+// = regex

@@ -1,16 +1,15 @@
-&'html'(preset = &'.\!'($this)) {
-    $head {
-        $title {
-            @()..&'surround'("\"")
+&'html'($name = "html", $preset = &'.\!'(%this)) {
+    %head {#str
+        %title {@(,,)./%/#surround(\")
             holy moly
         }
     }
-    $body {
+    %body {@(,,)./%/#surround(\")
         <main>
             <h1>omg it work</h1>
         </main>
     }
-    $html {
-
+    %html {@(,,)./%/#surround(\")
+        
     }
 }
