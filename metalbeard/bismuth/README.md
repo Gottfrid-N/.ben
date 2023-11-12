@@ -1,0 +1,1 @@
+**Bismuth** is **Metalbeard** macros that compile into text

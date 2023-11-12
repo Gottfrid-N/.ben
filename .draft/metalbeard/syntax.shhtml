@@ -1,0 +1,3 @@
+%var {
+    @(group stuff)#function(vars)
+}
