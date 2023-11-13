@@ -1,8 +1,0 @@
-[var: "var"]
-[scope: "open"]
-[func: "function"]
-[args: "open"]
-[arg: "vars"]
-[arg: "vars"]
-[args: "close"]
-[scope: "close"]
