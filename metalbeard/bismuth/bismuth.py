@@ -1,5 +1,5 @@
 import sys
-import metalbeard.bismuth.lexer as bismuth_lexer
+import metalbeard.bismuth as bismuth
 
 input_path = None
 output_path = None
@@ -26,7 +26,7 @@ def main():
     print(input_path, output_path)
 
     input_file = open(input_path, "r")
-    lexer = bismuth_lexer.Lexer(input_file.read())
+    lexer = bismuth.lexer.Lexer(input_file.read())
 
     output = lexer.lex()
     output_file = open(output_path, "w")
