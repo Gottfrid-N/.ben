@@ -10,14 +10,20 @@ class Lexer(ABC):
         self.current_char = None
         self.advance()
 
-    def advance(self):
+    def advance_silent(self):
         self.position.increment()
         try:
             self.current_char = self.input[self.position.character]
         except IndexError:
             self.current_char = None
-        finally:
-            print(self.position + ": " + self.current_char)
+
+    def advance(self):
+        self.position.increment()
+        try:
+            self.current_char = self.input[self.position.character]
+            print("[" + self.position.__str__() + "]: " + self.current_char)
+        except IndexError:
+            self.current_char = None
 
     @abstractmethod
     def lex(self):

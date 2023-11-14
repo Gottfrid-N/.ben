@@ -1,4 +1,5 @@
 from benny.types import *
+from benny.lexer import Lexer
 import lexer
 import tokens
 

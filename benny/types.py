@@ -38,7 +38,7 @@ class Position:
 
     def increment_line(self):
         self.line += 1
-        self.column = 0
+        self.column = -1
 
 
 class StringBuffer:

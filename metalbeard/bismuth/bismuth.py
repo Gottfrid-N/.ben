@@ -14,19 +14,13 @@ def main():
 
     args = sys.argv
 
-    try:
-        input_path = args[1]
-    except:
-        input_path = "A:\\Projects\\.shhtml\\metalbeard\\bismuth\\put\\input.txt"
-    try:
-        output_path = args[2]
-    except:
-        output_path = "A:\\Projects\\.shhtml\\metalbeard\\bismuth\\put\\output.txt"
+    input_path = "A:\\Projects\\.shhtml\\metalbeard\\bismuth\\put\\input.txt"
+    output_path = "A:\\Projects\\.shhtml\\metalbeard\\bismuth\\put\\output.txt"
 
     print(input_path, output_path)
 
     input_file = open(input_path, "r")
-    lexer = bismuth.lexer.Lexer(input_file.read())
+    lexer = bismuth.lexer.BismuthLexer(input_file.read())
 
     output = lexer.lex()
     output_file = open(output_path, "w")
