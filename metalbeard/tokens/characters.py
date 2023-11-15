@@ -1,0 +1,5 @@
+RUTHENIUM = "£"
+BISMUTH = "$"
+
+VARIABLE = "%"
+MACRO = "#"

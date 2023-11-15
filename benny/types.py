@@ -1,12 +1,6 @@
-class TokenDefinition:
-    def __init__(self, type_, character):
-        self.type = type_
-        self.character = character
-
-
 class Token:
-    def __init__(self, definition: TokenDefinition, value: str):
-        self.type = definition.type
+    def __init__(self, type_, value: str):
+        self.type = type_
         self.value = value
 
     def __str__(self) -> str:
