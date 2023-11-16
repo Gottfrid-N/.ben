@@ -17,8 +17,8 @@ class BismuthLexer(benny.Lexer):
                 case benny.tokens.characters.TAB | benny.tokens.characters.SPACE:
                     self.advance()
                     continue
-                case metalbeard.tokens.BISMUTH.character:
-                    output.append(benny.Token(metalbeard.tokens.BISMUTH.type, benny.))
+                case metalbeard.tokens.characters.BISMUTH:
+                    output.append(metalbeard.tokens.BISMUTH_OPEN)
                     match self.current_char:
                         case benny.tokens.GROUP.character
 

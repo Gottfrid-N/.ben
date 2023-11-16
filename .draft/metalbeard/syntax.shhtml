@@ -1,3 +1,17 @@
 %var {
     @(group stuff)#function(vars)
 }
+
+%variable% {
+    "gogogo gaga"
+}
+
+#insert(%variable) am little baby
+
+output: gogogo gaga am little baby
+
+4 * 2 + 3
+
+PRINT(output) {
+
+}
