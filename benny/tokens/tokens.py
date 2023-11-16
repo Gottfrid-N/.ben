@@ -1,5 +1,12 @@
 import benny
 
+
+def char(character):
+    return benny.Token("CHARACTER", character)
+
+def function(id_, parameters: list):
+    return benny.Token("FUNCTION", benny.)
+
 SEPERATOR = benny.Token("SEPERATOR", benny.tokens.values.EMPTY)
 
 STRING_OPEN = benny.Token("STRING", benny.tokens.values.OPEN)

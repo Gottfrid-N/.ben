@@ -1,5 +1,5 @@
 class Token:
-    def __init__(self, type_, value: str):
+    def __init__(self, type_, value: list[str]):
         self.type = type_
         self.value = value
 
@@ -33,6 +33,7 @@ class Position:
     def increment_line(self):
         self.line += 1
         self.column = -1
+
 
 
 class StringBuffer:

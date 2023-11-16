@@ -10,13 +10,6 @@ class Lexer(ABC):
         self.current_char = None
         self.advance()
 
-    def advance_silent(self):
-        self.position.increment()
-        try:
-            self.current_char = self.input[self.position.character]
-        except IndexError:
-            self.current_char = None
-
     def advance(self):
         self.position.increment()
         try:
