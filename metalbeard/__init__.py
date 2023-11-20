@@ -1,3 +1,2 @@
+from metalbeard.lexer import Lexer
 import metalbeard.tokens
-
-__version__ = "0.1|>2023-11-15a"
