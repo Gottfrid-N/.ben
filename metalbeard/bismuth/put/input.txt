@@ -1,4 +1,0 @@
-%variable% {
-    "yada yada-dada"
-}
-@(@$%variable%", it is good day to be, not DEAD")@$#surround#("\"")

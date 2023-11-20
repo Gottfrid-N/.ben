@@ -1,5 +1,0 @@
-RUTHENIUM = "£"
-BISMUTH = "$"
-
-VARIABLE = "%"
-MACRO = "#"
