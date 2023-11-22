@@ -1,5 +1,6 @@
 import benny
 import abc
+import re
 
 
 class Lexer(abc.ABC):
@@ -12,16 +13,17 @@ class Lexer(abc.ABC):
         self.current_char = ""
         self.advance()
 
-    def advance(self):
+    def increment_position(self):
         self.position.increment()
         if self.current_char == "\n":
             self.position.increment_line()
+
+    def advance(self):
+        print("\n", end="")
+        self.increment_position()
         try:
             self.current_char = self.input[self.position.char]
-            if self.current_char == "\n":
-                print(f"{self.position.__str__()}: <\"\\n\">", end=" ")
-            else:
-                print(f"{self.position.__str__()}: <\"{self.current_char}\">", end=" ")
+            print(f"{self.position.__str__()}: <\"{benny.escape_codify_char(self.current_char)}\">", end=" ")
         except IndexError:
             self.current_char = None
             print("end", end="")
@@ -30,6 +32,18 @@ class Lexer(abc.ABC):
         self.tokens.append(token)
         print(f"{token}", end="")
 
+    def identifier_logic(self, style):
+        buffer = ""
+        while re.match("\w", self.current_char):
+            buffer += self.current_char
+        match style:
+            case "pamelCase":
+                if buffer[0] == re.escape()
+            case "camelCase":
+                pass
+            case "snake_case":
+                pass
+
     @abc.abstractmethod
     def lex_logic(self):
         pass
@@ -37,5 +51,4 @@ class Lexer(abc.ABC):
     def lex(self):
         while self.current_char is not None:
             self.lex_logic()
-            print("")
             self.advance()
