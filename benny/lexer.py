@@ -3,15 +3,6 @@ import abc
 import re
 
 
-def nested_logic(self, token_open, token_close):
-    def inner(func):
-        self.append_token(token_open)
-        self.advance()
-        func()
-        self.append_token(token_close)
-    return inner
-
-
 class Lexer(abc.ABC):
     def __init__(self, input_: str):
         self.tokens = []
@@ -46,19 +37,7 @@ class Lexer(abc.ABC):
         while re.match("\w", self.current_char):
             buffer += self.current_char
             self.advance()
-        match style:
-            case "PascalCase":
-                if not re.match("^([A-Z0-9][a-z0-9]*)+", buffer):
-                    print(f"Invalid style in identifier at: {self.position.__str__()}\nExpected: PascalCase")
-            case "camelCase":
-                if not re.match("^([a-z0-9]+)+([A-Z0-9][a-z0-9]*)*", buffer):
-                    print(f"Invalid style in identifier at: {self.position.__str__()}\nExpected: camelCase")
-            case "snake_case":
-                if not re.match("[A-Z]", buffer):
-                    print(f"Invalid style in identifier at: {self.position.__str__()}\nExpected: snake_case")
-            case "SCREAMING_SNAKE_CASE":
-                if not re.match("[a-z]", buffer):
-                    print(f"Invalid style in identifier at: {self.position.__str__()}\nExpected: snake_case")
+
 
     @abc.abstractmethod
     def lex_logic(self):

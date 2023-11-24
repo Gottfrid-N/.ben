@@ -3,7 +3,6 @@ import metalbeard
 
 
 class Lexer(benny.Lexer):
-    @benny.lexer.nested_logic(, metalbeard.tokens.SCOPE_OPEN, metalbeard.tokens.SCOPE_CLOSE)
     def lex_metalbeard_scope_logic(self):
         while self.current_char != "}":
             if self.current_char == ";":
