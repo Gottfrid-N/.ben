@@ -25,6 +25,16 @@ def exclusive_match(pattern, text):
     return False
 
 
+def exclusive_match(pattern, text):
+    try:
+        regex_text = re.search(pattern, text)[0]
+        if regex_text is text:
+            return True
+    except TypeError:
+        return False
+    return False
+
+
 def pascal_case(text):
     # PascalCase
     return exclusive_match("^([A-Z0-9][a-z0-9]*)+", text)
