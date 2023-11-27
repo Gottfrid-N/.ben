@@ -1,5 +1,1 @@
-@{€yay% = "not dead :)"}
-@{€yay% = "DEAD!"}
-@#function(parameters, args) = {}
-
-it is good day to be @#insert(%var%), POW you are
+@#function(parameter1, parameter2) = {}

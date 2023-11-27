@@ -28,9 +28,12 @@ class Lexer(benny.Lexer):
                 self.lex_metalbeard_group_logic()
                 self.append_token(metalbeard.tokens.GROUP_CLOSE)
             case "%":
-                self.advance()
+                self.append_token(self.identifier("SCREAMING_SNAKE_CASE", benny.text.style.screaming_snake_case))
             case "#":
-                pass
+                self.advance()
+                while self.current_char != "=":
+                    self.append_token(self.identifier("SCREAMING_SNAKE_CASE", benny.text.style.screaming_snake_case))
+                    self.advance()
 
     def lex_logic(self):
         match self.current_char:

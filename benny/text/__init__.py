@@ -1,3 +1,6 @@
+import benny.text.style
+
+
 def escape_codify_char(char):
     match char:
         case "\n":
