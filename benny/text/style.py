@@ -1,4 +1,18 @@
 import re
+import enum
+
+
+class Style(enum.Enum):
+    pascal_case = text.pascal_case
+    camel_case = camel_case
+    snake_case = snake_case
+    screaming_snake_case = screaming_snake_case
+
+
+def is_style(expected_style: Style, string: str):
+    if expected_style.value()(string):
+        return True
+    return False
 
 
 def exclusive_match(pattern, text):

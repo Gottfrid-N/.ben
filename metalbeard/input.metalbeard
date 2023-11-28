@@ -1,1 +1,3 @@
 @#function(parameter1, parameter2) = {}
+@%CONSTANT% = "VALUE"
+@#insert(%CONSTANT%)
