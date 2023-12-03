@@ -1,11 +1,11 @@
-import benny.text.style
+import string
+import benny.text.case
+import benny.text.regex
+
+whitespace_string = string.whitespace
+whitespace = list(whitespace_string)
 
 
-def escape_codify_char(char):
-    match char:
-        case "\n":
-            return "\\n"
-        case "\t":
-            return "\\t"
-        case _:
-            return char
+if __name__ == "__main__":
+    print(whitespace)
+    print(whitespace_string)
