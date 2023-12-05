@@ -1,1 +1,3 @@
 @%VAR = "var"
+@€VAR
+@#coolFunction(parameters)

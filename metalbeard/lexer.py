@@ -1,4 +1,4 @@
-import sys
+import re
 
 import benny
 import metalbeard.tokens
@@ -6,41 +6,40 @@ import metalbeard.macros
 
 
 class Lexer(benny.lexer.Lexer):
-    def string(self):
+    def value(self):
         string = ""
         while self.current_char != "\"":
             string += self.current_char
             self.advance()
         return string
 
-    def operator(self, identifier):
+    def operator(self):
         match self.current_char:
             case "=":
                 self.advance()
                 self.skip_whitespace()
-                if self.current_char == "\"":
-                    self.advance()
-                    value = self.string()
-                    self.memory[identifier.value] = value
-                else:
-                    print(f"Unexpected char at {self.position}"
-                          f"Expected: \"")
-                    sys.exit()
-            case "(":
-                pass
-            case "%":
-                pass
 
-    def expression(self, style_name, style):
-        identifier = self.identifier(style_name, style)
-        self.skip_whitespace()
-        self.operator(identifier)
+    def identifier(self, style_name, style, **kwargs):
+        identifier = ""
+        while re.match("\w", self.current_char):
+            identifier += self.current_char
+            self.advance()
+        if not style(identifier, **kwargs):
+            print(f"Invalid Identifier style in \"{identifier}\" at {self.position.__str__()}\n\n"
+                  f"Expected {style_name}")
+        return identifier
+
+    def assign_expression(self):
+
+
+    def call_expression(self):
+
 
     def lex_expression(self):
         match self.current_char:
             case "%":
                 self.advance()
-                self.expression("SCREAMING_SNAKE_CASE", benny.text.case.screaming_snake_case)
+                self.assign_expression("SCREAMING_SNAKE_CASE", benny.text.case.screaming_snake_case)
             case "#":
                 self.advance()
                 self.expression("camelCase", benny.text.case.camel_case)
@@ -62,4 +61,3 @@ if __name__ == "__main__":
     lexer = Lexer(input_.read())
     Lexer.lex(lexer)
     print(lexer.tokens)
-    print(lexer.memory)

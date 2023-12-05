@@ -7,12 +7,15 @@ import re
 class Lexer(abc.ABC):
     def __init__(self, input_: str):
         self.tokens = []
-        self.memory = {}
 
         self.input = input_
         self.position = benny.position.Position()
         self.current_char = ""
         self.advance()
+
+    ###########
+    # ADVANCE #
+    ###########
 
     def increment_position(self):
         self.position.increment()
@@ -33,26 +36,42 @@ class Lexer(abc.ABC):
         while self.current_char in benny.text.whitespace:
             self.advance()
 
+    ##########
+    # APPEND #
+    ##########
+
     def append_token(self, token):
         if token is not None:
             self.tokens.append(token)
             print(f"{token}", end="")
 
-    def append_memory(self, key, value):
-        self.memory[key] = value
-        print(f"<{key}: {self.memory[key]}")
+    ##############
+    # EXPRESSION #
+    ##############
 
+    @abc.abstractmethod
+    def value(self, type_):
+        pass
+
+    @abc.abstractmethod
+    def operator(self):
+        pass
+
+    @abc.abstractmethod
+    def assign_expression(self):
+        pass
+
+    @abc.abstractmethod
     def identifier(self, style_name, style, **kwargs):
-        identifier = ""
-        while re.match("\w", self.current_char):
-            identifier += self.current_char
-            self.advance()
-        if not style(identifier, **kwargs):
-            print(f"Invalid Identifier style in \"{identifier}\" at {self.position.__str__()}\n\n"
-                  f"Expected {style_name}")
-        if identifier != "":
-            return benny.Token("IDENTIFIER", identifier)
-        return None
+        pass
+
+    @abc.abstractmethod
+    def call_expression(self):
+        pass
+
+    #######
+    # LEX #
+    #######
 
     @abc.abstractmethod
     def lex_logic(self):

@@ -30,6 +30,10 @@ def boolean_operator(operator_):
     return benny.Token("OPERATOR_BOOLEAN", operator_)
 
 
+def identifier(identifier_):
+    return benny.Token("IDENTIFIER", identifier_)
+
+
 SCOPE_OPEN = benny.Token("SCOPE", "OPEN")
 SCOPE_CLOSE = benny.Token("SCOPE", "CLOSE")
 SCOPE_SEPERATOR = benny.Token("SCOPE", "SEPERATOR")
