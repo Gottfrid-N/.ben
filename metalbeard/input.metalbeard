@@ -1,3 +1,2 @@
-@%VAR = "var"
-@€VAR
-@#coolFunction(parameters)
+@%VAR = "good"
+this pizza is @+%VAR
