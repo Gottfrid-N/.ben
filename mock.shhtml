@@ -1,0 +1,23 @@
+
+$%=addTag = "£%tags.js#append(£"event.add(\"\£%tag\", [\"kubejs:\£%id\"])")"
+$%=addRegistryItem = "\£\"event.create(£%id, "basic").displayName(£%displayName)\""
+£%=items.js = "items.js"
+£%=blocks.js = "blocks.js"
+£%=tags.js = "tags.js"
+
+£#=newItem(id, displayName, tags) = {
+    £%items.js#append($%addRegistryItem)
+    £%tags.forEach(tag => {
+        $%addTag
+    })
+}
+
+£#=newBlock(id, displayName, tags) = {
+    £%blocks.js#append($%addRegistryItem)
+    £%tags.forEach(tag => {
+        $%addTag
+    })
+}
+
+£#newItem($%=sandy_clay_blend = "sandy_clay_blend"+, "Sandy Clay Blend", ["forge:blends", "forge:blends/sandy"])
+£#newItem("blast_bricks", "Blast Bricks", ["forge:bricks", "forge:bricks/blast"])

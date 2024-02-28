@@ -1,5 +1,6 @@
 import re
 import sys
+import benny
 
 try:
     inputPath = sys.argv[1]
@@ -19,12 +20,14 @@ current_char = 0
 
 variables = {}
 
-def skipWhitespace():
+
+def skip_whitespace():
     global current_char
     while re.match("\s", input[current_char]):
         current_char += 1
 
-def captureUntilMatch(pattern):
+
+def capture_until_match(pattern):
     global current_char
     capture = ""
     while not re.match(pattern, input[current_char]):
@@ -32,10 +35,12 @@ def captureUntilMatch(pattern):
         current_char += 1
     return capture
 
-def identifier():
-    return captureUntilMatch("[^A-Za-z\._-]")
 
-def varLogic():
+def identifier():
+    return capture_until_match("[^A-Za-z\._-]")
+
+
+def var_logic():
     global current_char
     global output
     global variables
@@ -44,50 +49,53 @@ def varLogic():
         case "=":
             print("declare", end=": ")
             current_char += 1
-            varId = identifier()
-            skipWhitespace()
-            if (input[current_char] != "="):
+            var_id = identifier()
+            skip_whitespace()
+            if input[current_char] != "=":
                 raise SyntaxError("Expected \"=\" at character: " + str(current_char))
             current_char += 1
-            skipWhitespace()
-            if (input[current_char] != "\""):
+            skip_whitespace()
+            if input[current_char] != "\"":
                 raise SyntaxError("Expected \"\"\" at character: " + str(current_char))
             current_char += 1
-            value = captureUntilMatch("[\"]")
-            print(varId, end=" = ")
+            value = capture_until_match("[\"]")
+            print(var_id, end=" = ")
             print(value)
-            variables[varId] = value
-            if (input[current_char + 1] == "+"):
-                print("acces", end=": ")
-                print(varId)
-                output += variables[varId]
+            variables[var_id] = value
+            if input[current_char + 1] == "+":
+                print("access", end=": ")
+                print(var_id)
+                output += variables[var_id]
                 current_char += 1
         case _:
-            print("acces", end=": ")
-            varId = identifier()
-            print(varId)
-            output += variables[varId]
+            if input[current_char] == "+":
+                current_char += 1
+            print("access", end=": ")
+            var_id = identifier()
+            print(var_id)
+            output += variables[var_id]
             current_char -= 1
 
-
-def funcLogic():
+def func_logic():
     pass
 
-def bismuthLogic():
+
+def bismuth_logic():
     global current_char
     current_char += 1
     match input[current_char]:
         case "%":
             print("var", end="-")
-            varLogic()
+            var_logic()
         case "#":
             print("func", end="-")
-            funcLogic()
+            func_logic()
+
 
 while current_char < len(input):
     match input[current_char]:
         case "@":
-            bismuthLogic()
+            bismuth_logic()
         case _:
             print(input[current_char], end="")
             output += input[current_char]
