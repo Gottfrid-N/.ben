@@ -25,15 +25,17 @@ class BismuthInterpreter(benny.Interpreter):
             print("get", end=": ")
             print(var_id)
             self.outputs[0] += self.variables[var_id]
+            self.increment()
 
     def var_get(self):
         print("get", end=": ")
         var_id = self.identifier()
         print(var_id)
         self.outputs[0] += self.variables[var_id]
-        self.current_char -= 1
+        self.decrement()
 
     def var_logic(self):
+        self.increment()
         match self.inputs[0][self.current_char]:
             case "=":
                 self.var_set()
@@ -46,6 +48,7 @@ class BismuthInterpreter(benny.Interpreter):
         pass
 
     def bismuth_logic(self):
+        self.increment()
         match self.inputs[0][self.current_char]:
             case "%":
                 print("var", end="-")
@@ -55,8 +58,10 @@ class BismuthInterpreter(benny.Interpreter):
                 self.func_logic()
 
     def interpret(self):
-        match self.inputs[0][self.current_char]:
-            case "@":
-                self.bismuth_logic()
-            case _:
-                self.outputs[0] += self.inputs[0][self.current_char]
+        while self.current_char < len(self.inputs[0]):
+            match self.inputs[0][self.current_char]:
+                case "@":
+                    self.bismuth_logic()
+                case _:
+                    self.outputs[0] += self.inputs[0][self.current_char]
+            self.increment()

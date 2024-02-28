@@ -1,2 +1,2 @@
-import interpreter
-from interpreter import Interpreter
+import benny.interpreter
+from benny.interpreter import Interpreter
