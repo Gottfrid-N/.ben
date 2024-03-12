@@ -1,12 +1,14 @@
-@%=elemental.blaze.dust = "minecraft:blaze_powder"
-@%=elemental.blizz.dust = "thermal:blizz_powder"
-@%=sandy_clay_blend = "kubejs:sandy_clay_blend"+
-@%=kiln_brick = "kubejs:kiln_brick"+
-@%=kiln_bricks = "immersiveengineering:kilnbrick"+
+$I"grammar.bismuth"
 
-@%elemental.blaze.dust
-@%sandy_clay_blend
-
-ServerEvents.recipes(event => {
-    event.create({type: "minecraft:crafting", key = {B: @%elemental.blaze.dust}, pattern: ["bbb", "bbb", "bbb"], result: @%elemental.blizz.dust})
-})
+# Root
+$%=root = "liv"+
+# Noun
+$%root$%conjugation.noun
+# Adjective
+$%root$%conjugation.adjective
+$%root$%conjugation.adjective$%conjugation.adjective.verb
+# Verb
+$%root$%conjugation.verb
+*past*: $%root$%conjugation.verb$%tense.past
+*current*: $%root$%conjugation.verb$%tense.current
+*future*: $%root$%conjugation.verb$%tense.future

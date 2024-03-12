@@ -14,7 +14,7 @@ if __name__ == "__main__":
     except IndexError:
         outputPath = "output.txt"
 
-    bismuth_interpreter = bismuth.BismuthInterpreter([open(inputPath, "r", encoding="UTF-8").read()], [""])
+    bismuth_interpreter = bismuth.BismuthInterpreter([open(inputPath, "r", encoding="UTF-8").read()])
     bismuth_interpreter.interpret()
 
     output = bismuth_interpreter.outputs[0]
